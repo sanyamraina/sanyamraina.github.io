@@ -2,17 +2,17 @@ const projects = [
   {
     title: "Othello Game Platform",
     description:
-      "Full-stack strategy game with AI opponent using minimax algorithm, PostgreSQL move database, and real-time gameplay. Features advanced move history, branching support, and sub-500ms AI response times.",
-    tags: ["Python", "FastAPI", "React", "PostgreSQL", "AI/ML"],
+      "Full-stack strategy game with intelligent AI using minimax algorithm with alpha-beta pruning, achieving 80-90% search space reduction. Features PostgreSQL move database for sub-500ms AI responses, binary tree move history with branching support, and 30+ keyboard shortcuts. Built with Python/FastAPI backend and React frontend.",
+    tags: ["Python", "FastAPI", "React", "PostgreSQL", "AI/ML", "Minimax"],
     year: "2025",
     status: "Under Maintenance",
-    link: "#",
+    link: "https://othello-sigma-eosin.vercel.app",
   },
   {
-    title: "Stock Trading Platform",
+    title: "Stock Portfolio Dashboard",
     description:
-      "Real-time stock trading platform with portfolio management, live price feeds, and secure execution for 1,200+ users. Cross-platform with React web and Swift iOS apps.",
-    tags: ["React", "Node.js", "MongoDB", "Swift", "AWS"],
+      "Full-stack financial data aggregation platform integrating 9 API endpoints from Finnhub and Polygon.io. Built with Node.js/Express backend serving real-time quotes, 6-month historical charts, analyst recommendations, and insider sentiment. Mock trading environment for practice with portfolio management and risk-free execution.",
+    tags: ["Node.js", "Express", "JavaScript", "REST APIs", "Financial Data"],
     year: "2025",
     status: "Under Maintenance",
     link: "#",
@@ -20,10 +20,10 @@ const projects = [
   {
     title: "MyWorkout iOS App",
     description:
-      "Privacy-first fitness tracking app for iOS with workout templates, progress charts, and local storage. Built with SwiftUI featuring custom design system and dark/light themes.",
-    tags: ["SwiftUI", "iOS", "Swift Charts", "MVVM"],
+      "Privacy-first iOS fitness app built with SwiftUI and MVVM architecture. Features local JSON storage in Application Support, custom design system with MidnightSand/StudioMinimal themes, reusable workout templates, and progress tracking. Supports both strength and cardio workouts with comprehensive data models.",
+    tags: ["SwiftUI", "iOS", "MVVM", "Local Storage", "Design System"],
     year: "2026",
-    status: "Demo Video Available",
+    status: "Under Maintenance",
     link: "#",
   },
 ];
@@ -34,25 +34,27 @@ const experience = [
     company: "NEXED",
     period: "Jun 2025 - Dec 2025",
     description:
-      "Built scalable face swapping and video creation systems with Flask, AWS (EC2, S3, EBS), and multi-threaded processing. Reduced latency by 55% and failure rates by 40% under concurrent load.",
+      "Built scalable face swapping and video creation systems with Flask, AWS (EC2, S3, EBS), and multi-threaded processing. Designed production-grade infrastructure with autoscaling, persistent storage flows, and comprehensive monitoring. Reduced latency by 55% and failure rates by 40% under concurrent load.",
   },
   {
     role: "Software Development Intern",
     company: "Liberty Shoes",
     period: "Apr 2023 - Dec 2023",
     description:
-      "Designed sales forecasting system using Python and TensorFlow for 30+ products, improving accuracy by 15% and reducing inventory costs by 12%. Automated evaluations with Jenkins.",
+      "Spearheaded analysis efforts identifying critical features and engineered scalable data pipelines, boosting model accuracy by 15% and resilience by 25% across three major product lines. Designed sales forecasting system using Python and TensorFlow for 30+ products, driving over $200K in annual cost savings and reducing inventory costs by 12%.",
   },
 ];
 
 const skills = [
   "Python",
   "C++",
+  "C",
   "JavaScript",
   "TypeScript",
   "Swift",
   "React",
   "Node.js",
+  "Express.js",
   "Django",
   "Flask",
   "FastAPI",
@@ -64,6 +66,7 @@ const skills = [
   "AWS",
   "Docker",
   "REST APIs",
+  "GraphQL",
   "Machine Learning",
   "NLP",
 ];
@@ -98,6 +101,13 @@ export default function Home() {
           </a>
         </nav>
         <div className="hidden items-center gap-3 md:flex">
+          <a
+            className="rounded-full border border-foreground/10 px-4 py-2 text-sm font-semibold text-foreground transition hover:border-foreground/30"
+            href="/resume.pdf"
+            download="Sanyam_Raina_Resume.pdf"
+          >
+            Resume
+          </a>
           <a
             className="rounded-full border border-foreground/10 px-4 py-2 text-sm font-semibold text-foreground transition hover:border-foreground/30"
             href="#contact"
@@ -142,9 +152,9 @@ export default function Home() {
             </div>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {[
-                { label: "Years Experience", value: "3+" },
-                { label: "Projects Built", value: "15+" },
-                { label: "Research Papers", value: "2" },
+                { label: "Years Experience", value: "1+" },
+                { label: "Projects Built", value: "20+" },
+                { label: "Research Papers", value: "2+" },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -178,8 +188,11 @@ export default function Home() {
           </div>
           <div className="grid gap-6 lg:grid-cols-3">
             {projects.map((project) => (
-              <article
+              <a
                 key={project.title}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex h-full flex-col justify-between rounded-3xl border border-foreground/10 bg-card p-6 transition hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(20,20,20,0.12)]"
               >
                 <div>
@@ -204,7 +217,7 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-              </article>
+              </a>
             ))}
           </div>
         </section>
@@ -221,7 +234,7 @@ export default function Home() {
               Building intelligent systems from concept to production.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted">
-              Currently pursuing MS in Computer Science at USC (graduating Dec 2025), with a strong foundation in algorithms, AI, and full-stack development. Previously earned B.Tech in Computer Engineering from PDEU, India.
+              Recently completed MS in Computer Science at USC (Dec 2025), with a strong foundation in algorithms, AI, and full-stack development. Previously earned B.Tech in Computer Engineering from PDEU, India.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted">
               I've published research on BERT-based answer evaluation and real-time face mask detection, worked on production systems at NEXED and Liberty Shoes, and built everything from AI game engines to trading platforms. I love solving complex problems with clean, scalable code.
@@ -233,7 +246,7 @@ export default function Home() {
                 Current Focus
               </p>
               <p className="mt-3 text-lg font-medium text-foreground">
-                Machine learning systems, full-stack applications, and scalable cloud infrastructure. Graduating Dec 2025.
+                Machine learning systems, full-stack applications, and scalable cloud infrastructure. Recently graduated Dec 2025.
               </p>
             </div>
             <div className="rounded-2xl border border-foreground/10 bg-white/70 p-6">
@@ -243,6 +256,55 @@ export default function Home() {
               <p className="mt-3 text-lg font-medium text-foreground">
                 Seeking full-time Software Engineering roles starting Jan 2026. Open to ML Engineer, Backend, and Full-Stack positions.
               </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="rounded-3xl border border-foreground/10 bg-card p-10 md:p-14">
+          <p className="text-sm uppercase tracking-[0.3em] text-muted">
+            Research Publications
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold font-[var(--font-display)]">
+            Academic Contributions
+          </h2>
+          <div className="mt-6 space-y-8">
+            <div className="border-l border-foreground/10 pl-6">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted">
+                Jul 2023 • Springer
+              </p>
+              <h3 className="mt-2 text-lg font-semibold text-foreground">
+                Automatic Subjective Answer Evaluator using BERT
+              </h3>
+              <p className="mt-2 text-sm text-muted leading-relaxed">
+                Designed a BERT-based subjective answer evaluation system achieving 90% accuracy compared to manual grading. Architected hybrid NLP algorithm integrating TF-IDF and BERT embeddings for automated grading with semantic relevance matching.
+              </p>
+              <a
+                href="https://link.springer.com/chapter/10.1007/978-981-99-3315-0_40"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
+              >
+                View Publication →
+              </a>
+            </div>
+            <div className="border-l border-foreground/10 pl-6">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted">
+                Jul 2022 • CRC Press
+              </p>
+              <h3 className="mt-2 text-lg font-semibold text-foreground">
+                SafeShop: Integrated System for Safe Pickup of Items during COVID-19
+              </h3>
+              <p className="mt-2 text-sm text-muted leading-relaxed">
+                Developed real-time face mask detection system using SSD ResNet-50 with 94.67% accuracy. Enhanced user safety with Android application for contactless ordering, real-time pickup coordination, and GPS-based social distancing enforcement.
+              </p>
+              <a
+                href="https://www.taylorfrancis.com/chapters/edit/10.1201/9781003303053-7/safeshop-integrated-system-safe-pickup-items-covid-19-nisarg-kapkar-jahnavi-shah-sanyam-raina-nisarg-dave-mustafa-africawala"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
+              >
+                View Publication →
+              </a>
             </div>
           </div>
         </section>
@@ -305,12 +367,21 @@ export default function Home() {
                 Email: work.sanyam.raina@gmail.com · Phone: +1 (213) 696-2781
               </p>
             </div>
-            <a
-              className="rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:translate-y-[-1px]"
-              href="mailto:work.sanyam.raina@gmail.com"
-            >
-              Get in Touch
-            </a>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <a
+                className="rounded-full border border-foreground/15 px-6 py-3 text-sm font-semibold text-foreground transition hover:border-foreground/30"
+                href="/resume.pdf"
+                download="Sanyam_Raina_Resume.pdf"
+              >
+                Download Resume
+              </a>
+              <a
+                className="rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition hover:translate-y-[-1px]"
+                href="mailto:work.sanyam.raina@gmail.com"
+              >
+                Get in Touch
+              </a>
+            </div>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
